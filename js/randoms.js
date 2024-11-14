@@ -1,3 +1,26 @@
+function aleatorios () {
+    var vet = [];
+
+    while (vet.length < 60) {
+        var random = Math.floor(Math.random() * 60 + 1);
+
+        if (!(vet.includes(random)))    {
+            vet.push(random);
+        }
+    }
+    return vet;
+}
+
+let startFirstExecution = performance.now();
+
+console.log(aleatorios());
+
+let endFirstExecution = performance.now();
+
+let timeFirstExecution = endFirstExecution - startFirstExecution;
+
+console.log('\n' + timeFirstExecution + ' ms\n');
+
 function generateNumbers (x)    {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
                     11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
@@ -22,14 +45,16 @@ function generateNumbers (x)    {
     return result;
 }
 
-let startExecution = performance.now();
-
-//console.time('time');
+let startSecondExecution = performance.now();
 
 console.log(generateNumbers(60));
 
-//console.timeEnd('time');
+let endSecondExecution = performance.now();
 
-let endExecution = performance.now();
+let timeSecondExecution = endSecondExecution - startSecondExecution;
 
-console.log('\n' + (endExecution - startExecution));
+console.log('\n' + timeSecondExecution + ' ms\n');
+
+let percentage = (timeFirstExecution - timeSecondExecution) / timeFirstExecution * 100;
+
+console.log('\n' + percentage + ' %');
